@@ -1,0 +1,14 @@
+class PopulateRace < ActiveRecord::Migration
+  def up
+        Race.create(:name => "Pandaren")
+        Race.create(:name => "Worgen")
+        Race.create(:name => "Draenei")
+        Race.create(:name => "Dwarf")
+        Race.create(:name => "Gnome")
+        Race.create(:name => "Human")
+        Race.create(:name => "Night Elf")
+  end
+
+  def down
+  end
+end

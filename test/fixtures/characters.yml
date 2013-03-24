@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyText
+  spec: 
+  primary_talent: 
+  secondary_talent: 
+  guid: 
+  race: 
+
+two:
+  name: MyText
+  spec: 
+  primary_talent: 
+  secondary_talent: 
+  guid: 
+  race: 

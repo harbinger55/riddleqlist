@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @character.name %>
+</p>
+
+<p>
+  <b>Spec:</b>
+  <%= @character.spec.name %>
+</p>
+
+<p>
+  <b>Primary talent:</b>
+  <%= @character.primary_talent.name %>
+</p>
+
+<p>
+  <b>Secondary talent:</b>
+  <%= @character.secondary_talent.name %>
+</p>
+
+<p>
+  <b>Guild:</b>
+  <%= @character.guild.name %>
+</p>
+
+<p>
+  <b>Race:</b>
+  <%= @character.race.name %>
+</p>
+<p>
+  <b>Rating:</b>
+  <%= @character.rating %>
+</p>
+<p>
+  <b>Notes:</b>
+  <%= @character.notes %>
+</p>
+
+
+<%= link_to 'Edit', edit_character_path(@character) %> |
+<%= link_to 'Back', characters_path %>

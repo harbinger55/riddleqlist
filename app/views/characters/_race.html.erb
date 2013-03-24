@@ -1,0 +1,4 @@
+  <div class="field">
+    <%= f.label :race %><br />
+    <%= f.select :race_id, @races.map {|r| [r.name,r.id] } %>
+  </div>

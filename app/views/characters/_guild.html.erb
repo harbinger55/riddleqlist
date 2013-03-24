@@ -1,0 +1,4 @@
+  <div class="field">
+    <%= f.label :guild %><br />
+    <%= f.select :guild_id, @guilds.map {|r| [r.name,r.id] } %>
+  </div>

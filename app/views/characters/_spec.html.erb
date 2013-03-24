@@ -1,0 +1,12 @@
+  <div class="field">
+    <%= f.label :spec %><br />
+    <%= f.select :spec_id, @specs.map {|r| [r.name,r.id] } %>
+  </div>
+  <div class="field">
+    <%= f.label :primary_talent %><br />
+    <%= f.select :primary_talent_id, @talents.map {|r| [r.name,r.id] } %>
+  </div>
+  <div class="field">
+    <%= f.label :secondary_talent %><br />
+    <%= f.select :secondary_talent_id, @talents.map {|r| [r.name,r.id] } %>
+  </div>

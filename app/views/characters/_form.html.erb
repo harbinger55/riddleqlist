@@ -1,0 +1,32 @@
+<%= form_for(@character) do |f| %>
+  <% if @character.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@character.errors.count, "error") %> prohibited this character from being saved:</h2>
+
+      <ul>
+      <% @character.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <%= render :partial => 'spec', :locals => {:f => f} %>
+  <%= render :partial => 'guild', :locals => {:f => f} %>
+  <%= render :partial => 'race', :locals => {:f => f} %>
+  <div class="field">
+    <%= f.label :rating %><br />
+    <%= f.select :rating, (1..10).map {|r| [r,r] } %>
+  </div>
+  <div class="field">
+    <%= f.label :notes %><br />
+    <%= f.text_area :notes %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

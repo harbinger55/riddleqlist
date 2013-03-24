@@ -1,0 +1,41 @@
+class PopulateTalents < ActiveRecord::Migration
+  def up
+	Talent.create(:name => "Arms", :spec_id => 11)
+	Talent.create(:name => "Fury", :spec_id => 11)
+	Talent.create(:name => "Protection", :spec_id => "11")
+	Talent.create(:name => "Beast Mastery", :spec_id => "3")
+	Talent.create(:name => "Marksmanship", :spec_id => "3")
+	Talent.create(:name => "Survival", :spec_id => "3")
+	Talent.create(:name => "Discipline", :spec_id => "7")
+	Talent.create(:name => "Holy", :spec_id => "7")
+	Talent.create(:name => "Shadow", :spec_id => "7")
+	Talent.create(:name => "Elemental", :spec_id => "9")
+	Talent.create(:name => "Enhancement", :spec_id => "9")
+	Talent.create(:name => "Restoration", :spec_id => "9")
+	Talent.create(:name => "Affliction", :spec_id => "10")
+	Talent.create(:name => "Demonology", :spec_id => "10")
+	Talent.create(:name => "Destruction", :spec_id => "10")
+	Talent.create(:name => "Balance", :spec_id => "2")
+	Talent.create(:name => "Feral", :spec_id => "2")
+	Talent.create(:name => "Guardian", :spec_id => "2")
+	Talent.create(:name => "Restoration", :spec_id => "2")
+	Talent.create(:name => "Holy", :spec_id => "6")
+	Talent.create(:name => "Protection", :spec_id => "6")
+	Talent.create(:name => "Retribution", :spec_id => "6")
+	Talent.create(:name => "Assassination", :spec_id => "8")
+	Talent.create(:name => "Combat", :spec_id => "8")
+	Talent.create(:name => "Subltety", :spec_id => "8")
+	Talent.create(:name => "Blood", :spec_id => "1")
+	Talent.create(:name => "Frost", :spec_id => "1")
+	Talent.create(:name => "Unholy", :spec_id => "1")
+	Talent.create(:name => "Arcane", :spec_id => "4")
+	Talent.create(:name => "Fire", :spec_id => "4")
+	Talent.create(:name => "Frost", :spec_id => "4")
+	Talent.create(:name => "Bremaster", :spec_id => "5")
+	Talent.create(:name => "Mistweaver", :spec_id => "5")
+	Talent.create(:name => "Winmdwalker", :spec_id => "5")
+  end
+
+  def down
+  end
+end
