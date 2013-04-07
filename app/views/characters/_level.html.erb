@@ -1,0 +1,4 @@
+  <div class="field">
+    <%= f.label :level %><br />
+    <%= f.select :level, (1..90).reverse_each.map {|r| [r,r]} %>
+  </div>

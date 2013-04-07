@@ -15,9 +15,14 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+  <div class="actions">
+    <%= f.submit "Update from BattleNet", :name => "import" %>
+  </div>
+  <%= render :partial => 'level', :locals => {:f => f} %>
   <%= render :partial => 'spec', :locals => {:f => f} %>
   <%= render :partial => 'guild', :locals => {:f => f} %>
   <%= render :partial => 'race', :locals => {:f => f} %>
+  <%= render :partial => 'role', :locals => {:f => f} %>
   <div class="field">
     <%= f.label :rating %><br />
     <%= f.select :rating, (1..10).map {|r| [r,r] } %>

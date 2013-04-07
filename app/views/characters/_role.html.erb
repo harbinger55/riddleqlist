@@ -1,0 +1,5 @@
+<%= f.label "Roles" %><br/>
+<% @roles.each do |r| %>
+	<%= check_box_tag "character[role_ids][]",r.id, @character.role.include?(r) %>
+	<%= r.name %>
+<% end %>

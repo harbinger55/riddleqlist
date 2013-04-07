@@ -1,12 +1,12 @@
 class PopulateRaces < ActiveRecord::Migration
   def up
-	Race.create(:name => "Draenei")
-	Race.create(:name => "Dwarf")
-	Race.create(:name => "Gnome")
-	Race.create(:name => "Human")
-	Race.create(:name => "Night Elf")
-	Race.create(:name => "Worgen")
-	Race.create(:name => "Pandaren")
+        Race.create(:id_bnet => "15",:name => "Pandaren")
+        Race.create(:id_bnet => "22",:name => "Worgen")
+        Race.create(:id_bnet => "11",:name => "Draenei")
+        Race.create(:id_bnet => "3",:name => "Dwarf")
+        Race.create(:id_bnet => "7",:name => "Gnome")
+        Race.create(:id_bnet => "1",:name => "Human")
+        Race.create(:id_bnet => "4", :name => "Night Elf")
   end
 
   def down

@@ -1,16 +1,16 @@
 class PopulateSpec < ActiveRecord::Migration
   def up
-       Spec.create(:name => "Death Knight")
-        Spec.create(:name => "Druid")
-        Spec.create(:name => "Hunter")
-        Spec.create(:name => "Mage")
-        Spec.create(:name => "Monk")
-        Spec.create(:name => "Paladin")
-        Spec.create(:name => "Priest")
-        Spec.create(:name => "Rogue")
-        Spec.create(:name => "Shaman")
-        Spec.create(:name => "Warlock")
-        Spec.create(:name => "Warrior")
+        Spec.create(:id_bnet => "1", :name => "Warrior")
+        Spec.create(:id_bnet => "2",:name => "Paladin")
+        Spec.create(:id_bnet => "3",:name => "Hunter")
+        Spec.create(:id_bnet => "4",:name => "Rogue")
+        Spec.create(:id_bnet => "5",:name => "Priest")
+        Spec.create(:id_bnet => "6",:name => "Death Knight")
+        Spec.create(:id_bnet => "7",:name => "Shaman")
+        Spec.create(:id_bnet => "8",:name => "Mage")
+        Spec.create(:id_bnet => "9",:name => "Warlock")
+        Spec.create(:id_bnet => "10",:name => "Monk")
+        Spec.create(:id_bnet => "11",:name => "Druid")
   end
 
   def down

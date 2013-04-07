@@ -3,12 +3,14 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Level</th>
     <th>Spec</th>
     <th>Primary talent</th>
     <th>Secondary talent</th>
     <th>Guild</th>
     <th>Race</th>
     <th>Rating</th>
+    <th>Notes</th>
     <th></th>
     <th></th>
     <th></th>
@@ -16,13 +18,15 @@
 
 <% @characters.each do |character| %>
   <tr>
-    <td><%= character.name %></td>
+    <td><%= link_to character.name, "http://us.battle.net/wow/en/character/moonrunner/#{character.name.capitalize}/simple" %></td>
+    <td><%= character.level %></td>
     <td><%= character.spec.name %></td>
     <td><%= character.primary_talent.name %></td>
     <td><%= character.secondary_talent.name %></td>
     <td><%= character.guild.name %></td>
     <td><%= character.race.name %></td>
     <td><%= character.rating %></td>
+    <td><%= truncate(character.notes, :length => 60) %></td>
     <td><%= link_to 'Show', character %></td>
     <td><%= link_to 'Edit', edit_character_path(character) %></td>
     <td><%= link_to 'Destroy', character, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -2,6 +2,7 @@ class CreateCharacters < ActiveRecord::Migration
   def change
     create_table :characters do |t|
       t.text :name
+      t.integer :id_bnet
       t.references :spec
       t.references :primary_talent
       t.references :secondary_talent
@@ -15,5 +16,6 @@ class CreateCharacters < ActiveRecord::Migration
     add_index :characters, :secondary_talent_id
     add_index :characters, :guid_id
     add_index :characters, :race_id
+    add_index :characters, :id_bnet
   end
 end
