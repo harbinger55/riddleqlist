@@ -60,6 +60,7 @@ GEM
     mime-types (1.21)
     multi_json (1.6.1)
     multi_xml (0.5.3)
+    mysql2 (0.3.11)
     pg (0.14.1)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -118,6 +119,7 @@ DEPENDENCIES
   battlenet
   coffee-rails (~> 3.2.1)
   jquery-rails
+  mysql2
   pg
   rails (= 3.2.12)
   sass-rails (~> 3.2.3)

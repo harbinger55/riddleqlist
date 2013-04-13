@@ -24,12 +24,15 @@ class CharactersController < ApplicationController
   # GET /characters/new
   # GET /characters/new.json
   def new
-    @character = Character.new
+  @character = Character.new
 	@specs = Spec.order(:name)
 	@talents = Talent.order(:name)
 	@races = Race.order(:name)
 	@guilds = Guild.order(:name)
   @roles = Role.all
+  @raids = Raids.all
+  @expansions = Expansion.all
+  @bosses = Boss.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -39,41 +42,51 @@ class CharactersController < ApplicationController
 
   # GET /characters/1/edit
   def edit
-    @character = Character.find(params[:id])
+  @character = Character.find(params[:id])
 	@specs = Spec.order(:name)
 	@talents = Talent.order(:name)
 	@races = Race.order(:name)
   @roles = Role.all
 	@guilds = Guild.order(:name)
+  @raids = Raids.all
+  @expansions = Expansion.all
+  @bosses = Boss.all
   end
 
 def import_from_battlenet
+    Battlenet.fail_silently = true
     bnet = Battlenet.new :us 
     puts "#{@character.name.capitalize}"
     toon = bnet.character 'Moonrunner', "#{@character.name.capitalize}", :fields => "guild,talents,class,race"
-    toon_spec = Spec.find_by_id_bnet(toon['class'])
-    @character.spec_id = toon_spec.id
-    toon_race = Race.find_by_id_bnet(toon['race'])
-    @character.race_id = toon_race.id
-    toon_guild = Guild.find_or_create_by_name("#{toon['guild']['name']}")
-    @character.guild_id = toon_guild.id
-    @character.level = "#{toon['level']}"
-    puts "CLASS ====== #{toon_spec.name}"
-    puts "RACE ======= #{toon_race.name}"
-    puts "LEVEL ====== #{toon['level']}"
-    puts "GUILD ====== #{toon['guild']['name']}"
-    puts "TALENTS ==== #{toon['talents']}"
-    toon['talents'].each_with_index do |t,i|
-      if i == 0
-        puts "PRIMARY TALENT ======= #{t['spec']['name']}"
-        toon_talent = Talent.find_by_name("#{t['spec']['name']}")
-        @character.primary_talent_id = toon_talent.id
-      elsif i == 1
-        puts "SECONDARY TALENT ======= #{t['spec']['name']}}"
-        toon_talent = Talent.find_by_name("#{t['spec']['name']}")
-        @character.secondary_talent_id = toon_talent.id
+    unless toon["name"].nil?
+      toon_spec = Spec.find_by_id_bnet(toon['class'])
+      @character.spec_id = toon_spec.id
+      toon_race = Race.find_by_id_bnet(toon['race'])
+      @character.race_id = toon_race.id
+      toon_guild = Guild.find_or_create_by_name("#{toon['guild']['name']}")
+      @character.guild_id = toon_guild.id
+      @character.level = "#{toon['level']}"
+      puts "CLASS ====== #{toon_spec.name}"
+      puts "RACE ======= #{toon_race.name}"
+      puts "LEVEL ====== #{toon['level']}"
+      puts "GUILD ====== #{toon['guild']['name']}"
+      puts "TALENTS ==== #{toon['talents']}"
+      toon['talents'].each_with_index do |t,i|
+        if i == 0
+          puts "PRIMARY TALENT ======= #{t['spec']['name']}"
+          toon_talent = Talent.find_by_name("#{t['spec']['name']}")
+          @character.primary_talent_id = toon_talent.id
+        elsif i == 1
+          puts "SECONDARY TALENT ======= #{t['spec']['name']}}"
+          toon_talent = Talent.find_by_name("#{t['spec']['name']}")
+          @character.secondary_talent_id = toon_talent.id
+        end  
       end
+    else
+      @character.errors.add(:name, "Character not found on battlenet")
     end
+
+
 end
   # POST /characters
   # POST /characters.json
@@ -84,6 +97,9 @@ end
     @races = Race.order(:name)
     @guilds = Guild.order(:name)
     @roles = Role.all
+    @raids = Raids.all
+    @expansions = Expansion.all
+    @bosses = Boss.all
 
     respond_to do |format|
       if params[:import]
@@ -111,6 +127,9 @@ end
     @races = Race.order(:name)
     @roles = Role.all
     @guilds = Guild.order(:name)
+    @raids = Raids.all
+    @expansions = Expansion.all
+    @bosses = Boss.all
 
     respond_to do |format|
       if params[:import]

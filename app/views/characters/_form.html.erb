@@ -23,6 +23,9 @@
   <%= render :partial => 'guild', :locals => {:f => f} %>
   <%= render :partial => 'race', :locals => {:f => f} %>
   <%= render :partial => 'role', :locals => {:f => f} %>
+  <% @expansions.reverse.each do |e| %>
+    <%= render :partial => 'expansion', :locals => {:f => f, :expansion => e} %>
+  <% end %>
   <div class="field">
     <%= f.label :rating %><br />
     <%= f.select :rating, (1..10).map {|r| [r,r] } %>

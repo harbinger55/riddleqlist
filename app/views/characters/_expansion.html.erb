@@ -1,0 +1,16 @@
+  <div class="field">
+    <%= f.label expansion.name %><br />
+   		<% @raids.each do |raid| %>
+   			<% if expansion.id == raid.expansion.id %>
+   				<%= raid.name %> 
+   				:
+   				<% @bosses.each do |bosse| %>
+   					<% if raid.id == bosse.raid_id %>
+   					<%= check_box_tag "character[boss_ids][]",bosse.id %> 
+   						<%= bosse.name %>
+   					<% end %>
+   				<% end %>
+   			</br>
+   			<% end %>
+   		<% end %>
+  </div>

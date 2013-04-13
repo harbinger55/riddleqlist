@@ -11,7 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130406233513) do
+ActiveRecord::Schema.define(:version => 20130413075214) do
+
+  create_table "bosses", :force => true do |t|
+    t.text     "name"
+    t.integer  "raid_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "bosses", ["raid_id"], :name => "index_bosses_on_raid_id"
+
+  create_table "character_bosses", :force => true do |t|
+    t.integer  "character_id"
+    t.integer  "boss_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "character_bosses", ["boss_id"], :name => "index_character_bosses_on_boss_id"
+  add_index "character_bosses", ["character_id"], :name => "index_character_bosses_on_character_id"
 
   create_table "character_roles", :force => true do |t|
     t.integer  "character_id"
@@ -42,6 +61,16 @@ ActiveRecord::Schema.define(:version => 20130406233513) do
   add_index "characters", ["secondary_talent_id"], :name => "index_characters_on_secondary_talent_id"
   add_index "characters", ["spec_id"], :name => "index_characters_on_spec_id"
 
+  create_table "characters_bosses", :force => true do |t|
+    t.integer  "character_id"
+    t.integer  "boss_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "characters_bosses", ["boss_id"], :name => "index_characters_bosses_on_boss_id"
+  add_index "characters_bosses", ["character_id"], :name => "index_characters_bosses_on_character_id"
+
   create_table "characters_roles", :id => false, :force => true do |t|
     t.integer "character_id"
     t.integer "role_id"
@@ -50,8 +79,26 @@ ActiveRecord::Schema.define(:version => 20130406233513) do
   add_index "characters_roles", ["character_id"], :name => "index_characters_roles_on_character_id"
   add_index "characters_roles", ["role_id"], :name => "index_characters_roles_on_role_id"
 
+  create_table "difficulties", :force => true do |t|
+    t.text     "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "expansions", :force => true do |t|
+    t.text     "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "guilds", :force => true do |t|
     t.integer  "id_bnet"
+    t.text     "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "locations", :force => true do |t|
     t.text     "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -71,6 +118,17 @@ ActiveRecord::Schema.define(:version => 20130406233513) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "raids", :force => true do |t|
+    t.text     "name"
+    t.integer  "level"
+    t.integer  "location_id"
+    t.integer  "expansion_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "raids", ["location_id"], :name => "index_raids_on_location_id"
 
   create_table "roles", :force => true do |t|
     t.text     "name"
